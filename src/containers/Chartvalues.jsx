@@ -5,6 +5,7 @@ import { Line } from 'react-chartjs-2';
 const Chartvalues = () => {
 
     const [accuracies, Setaccuracies] = useState([]);
+    const [valLosses, Setvallosses] = useState([]);
     const [losses, Setlosses] = useState([]);
     const [maelacts, Setmaelacts] = useState([]);
     const [maestrep, Setmaestrep] = useState([]);
@@ -14,10 +15,11 @@ const Chartvalues = () => {
         fetch(APIFLASKM1)
             .then(response => response.json())
             .then(data => Setaccuracies(data.classification.accuracy) || Setlosses(data.classification.loss) ||
-                Setmaelacts(data.maelact) || Setmaestrep(data.maestrep))
+                Setmaelacts(data.maelact) || Setmaestrep(data.maestrep) || Setvallosses(data.classification.val_loss))
     }, [])
-    console.log(maelacts);
-
+    
+    console.log("val_losses: ", valLosses);
+    console.log("losses: ", losses);
     let labelStack = [];
 
     for (let i=1; i < 81; i++){
@@ -30,14 +32,24 @@ const Chartvalues = () => {
         labels: labelStack,
         datasets: [
             {
-                label: 'Mean absolute error',
+                label: "Entrenamiento",
                 fill: false,
-                lineTension: 0.5,
+                lineTension: 0.1,
+                backgroundColor: 'rgba(247, 100, 128, 0.4)',
+                borderColor: 'rgb(75, 192, 192)',
+                //borderWidth: 2,
+                data: losses
+            },
+            {
+                label: "Validación",
+                fill: false,
+                lineTension: 0.1,
                 backgroundColor: 'rgba(75,192,192,1)',
                 borderColor: 'rgba(0,0,0,1)',
                 borderWidth: 2,
-                data: maestrep
+                data: valLosses
             }
+
         ]
     }
 
