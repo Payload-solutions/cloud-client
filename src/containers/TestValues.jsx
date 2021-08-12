@@ -1,12 +1,25 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 // import { bacteriaRequest} from '../actions';
-
+import axios from 'axios';
 
 /**
  * 
  * [minimum_milk_proteins, titratable_acidity, pH_milk_sour_, fat_milk_over_100mg_
  */
+
+/**
+ * {
+    "targetBacterian": 4.106, 
+    "minProteins": 2.591, 
+    "tritatableAcid": 0.992, 
+    "phSour": 4.415, 
+    "fatMilk": 3.1925
+}
+ */
+
+
+
 
 const TestValues = props => {
 
@@ -26,8 +39,14 @@ const TestValues = props => {
     const handleSubmit = event => {
         event.preventDefault();
         // props.bacteriaRequest(form);
-        console.log(form);
-        props.history.push("/response")
+        console.log({form});
+        axios.post("http://127.0.0.1:5000/strep", form)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+        // console.log(form);
+        // props.history.push("/response")
     }
 
 
@@ -41,6 +60,7 @@ const TestValues = props => {
                             <input
                                 name="targetBacterian"
                                 type="number"
+                                step="any"
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="Predicción bacteriana"
@@ -54,6 +74,7 @@ const TestValues = props => {
                             <input
                                 name="minProteins"
                                 type="number"
+                                step="any"
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="Proteínas mínimas"
@@ -67,6 +88,7 @@ const TestValues = props => {
                             <input
                                 name="tritatableAcid"
                                 type="number"
+                                step="any"
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="Ácido tritatable"
@@ -80,6 +102,7 @@ const TestValues = props => {
                             <input
                                 name="phSour"
                                 type="number"
+                                step="any"
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="pH suero de leche"
@@ -93,6 +116,7 @@ const TestValues = props => {
                             <input
                                 name="fatMilk"
                                 type="number"
+                                step="any"
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="Grasa de la leche sobre 100mg"
