@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import APIFLASKM1 from '../links/links';
+import {APIFLASKM1} from '../links/links';
 import { Line } from 'react-chartjs-2';
 
 const Chartvalues = () => {
@@ -8,15 +8,19 @@ const Chartvalues = () => {
     const [valAccuracies, Setvalaccuracies] = useState([]);
     const [valLosses, Setvallosses] = useState([]);
     const [losses, Setlosses] = useState([]);
-    const [rangeVals, Setrangevals] = useState([]);
+    //const [rangeVals, Setrangevals] = useState([]);
 
     // const APIFLASKM1 = "http://127.0.0.1:5000/charting";
     useEffect(() => {
         fetch(APIFLASKM1)
             .then(response => response.json())
-            .then(data => Setaccuracies(data.classification.accuracy) || Setlosses(data.classification.loss) ||
-            Setrangevals(data.range_vals) || Setvallosses(data.classification.val_loss) || Setvalaccuracies(data.classification.val_accuracy))
+            .then(data => Setaccuracies(data.classification.accuracy) || Setlosses(data.classification.loss) ||Setvallosses(data.classification.val_loss) || Setvalaccuracies(data.classification.val_accuracy))
     }, [])
+
+    let rangeVals = [];
+    for (let i =1; i < 81; i++) {
+        rangeVals.push(i)
+    }
 
     const state = {
 
@@ -44,7 +48,6 @@ const Chartvalues = () => {
 
         ]
     }
-
 
     const classifiactionAcc = {
 
@@ -85,9 +88,8 @@ const Chartvalues = () => {
                         </div>
                         <div className="card-body">
                             <p className="card-text">
-                                Podemos apredciar, la cantidad de ruido que genera el error medio absoluto.
-                                En varios entrenamientos reaelizados, con esta cantidad de valores podemos generar varias predicciones
-                                acertadas, ya que con este entrenamiento evitamos el overfitting y el underfitting.
+                                Con 1000 entrenamientos, se corroboró que alcanzamos una precisión aceptable para la red y evitamos caer en el overfitting,
+                                adicional que los parámetros son los adecuadors para hacer el entrenamiento.
                             </p>
                         </div>
                     </div>
@@ -113,7 +115,7 @@ const Chartvalues = () => {
                     <div className="card">
                         <div className="card-header">
                             <h5 className="card-title">
-                                Precisión del entrenamiento.
+                                Precisión de la predicción.
                             </h5>
                         </div>
                         <div className="card-body">

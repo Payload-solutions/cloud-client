@@ -7,9 +7,6 @@ const TestValues = () => {
             <form action="/stck/add" method="POST" encType="multipart/form-data">
                 <div className="row">
                     <div className="form-group col-md-6">
-                        {/* <label htmlFor="idealTemp">Temperatura ideal</label>
-                        <input required type="text" className="form-control" placeholder="Temperatura ideal" id="idealTemp" name="name" autoFocus />
-                         */}
                         <div className="form-floating mb-3">
                             <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
                             <label for="floatingInput">Temperatura ideal</label>

@@ -8,6 +8,25 @@
 	padding-left: 10px;
 }
 
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.hrz-txt-scroll {
+	width: 400px;
+	height: 5rem;
+	padding: 15px;
+	overflow: auto;
+	white-space: nowrap;
+  }
+  
+  .hrz-txt-scroll p {
+	  margin-bottom: 0;
+  }
+
 /*@media 
 only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
