@@ -5,31 +5,23 @@ import { Line } from 'react-chartjs-2';
 const Chartvalues = () => {
 
     const [accuracies, Setaccuracies] = useState([]);
+    const [valAccuracies, Setvalaccuracies] = useState([]);
     const [valLosses, Setvallosses] = useState([]);
     const [losses, Setlosses] = useState([]);
-    const [maelacts, Setmaelacts] = useState([]);
-    const [maestrep, Setmaestrep] = useState([]);
+    const [rangeVals, Setrangevals] = useState([]);
 
     // const APIFLASKM1 = "http://127.0.0.1:5000/charting";
     useEffect(() => {
         fetch(APIFLASKM1)
             .then(response => response.json())
             .then(data => Setaccuracies(data.classification.accuracy) || Setlosses(data.classification.loss) ||
-                Setmaelacts(data.maelact) || Setmaestrep(data.maestrep) || Setvallosses(data.classification.val_loss))
+            Setrangevals(data.range_vals) || Setvallosses(data.classification.val_loss) || Setvalaccuracies(data.classification.val_accuracy))
     }, [])
-    
-    console.log("val_losses: ", valLosses);
-    console.log("losses: ", losses);
-    let labelStack = [];
-
-    for (let i=1; i < 81; i++){
-        labelStack.push(i)
-    }
 
     const state = {
 
 
-        labels: labelStack,
+        labels: rangeVals,
         datasets: [
             {
                 label: "Entrenamiento",
@@ -37,7 +29,7 @@ const Chartvalues = () => {
                 lineTension: 0.1,
                 backgroundColor: 'rgba(247, 100, 128, 0.4)',
                 borderColor: 'rgb(75, 192, 192)',
-                //borderWidth: 2,
+                borderWidth: 2,
                 data: losses
             },
             {
@@ -45,21 +37,41 @@ const Chartvalues = () => {
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: 'rgba(75,192,192,1)',
-                borderColor: 'rgba(0,0,0,1)',
-                borderWidth: 2,
+                borderColor: 'rgb(252, 20, 11)',
+                //borderWidth: 2,
                 data: valLosses
             }
 
         ]
     }
 
-    const lactState = {
-        datasets: [{
-          label: 'Scatter Dataset',
-          data: maelacts,
-          backgroundColor: 'rgb(255, 99, 132)'
-        }],
-      };
+
+    const classifiactionAcc = {
+
+
+        labels: rangeVals,
+        datasets: [
+            {
+                label: "Precisión",
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: 'rgba(247, 100, 128, 0.4)',
+                borderColor: 'rgb(75, 192, 192)',
+                borderWidth: 2,
+                data: accuracies
+            },
+            {
+                label: "Validación",
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: 'rgba(75,192,192,1)',
+                borderColor: 'rgb(252, 20, 11)',
+                //borderWidth: 2,
+                data: valAccuracies
+            }
+
+        ]
+    }
 
     return (
         <div className="container p-4">
@@ -68,7 +80,7 @@ const Chartvalues = () => {
                     <div className="card">
                         <div className="card-header">
                             <h5 className="card-title">
-                                Error medio absoluto
+                                Precisión del entrenamiento.
                             </h5>
                         </div>
                         <div className="card-body">
@@ -95,10 +107,27 @@ const Chartvalues = () => {
                     }
                 }}
             />
-            
 
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="card">
+                        <div className="card-header">
+                            <h5 className="card-title">
+                                Precisión del entrenamiento.
+                            </h5>
+                        </div>
+                        <div className="card-body">
+                            <p className="card-text">
+                                Podemos verificar que el entrenamiento y su respectiva validación, en un punto
+                                se verifica que empieza a unificarse los valores, corroborando que el entrenamiento
+                                tiene un alto grado de precisión.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <Line
-                data={lactState}
+                data={classifiactionAcc}
                 options={{
                     title: {
                         display: true,
