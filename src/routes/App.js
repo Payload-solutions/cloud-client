@@ -6,6 +6,8 @@ import Layout from '../components/Layout';
 import Tables from '../containers/Tables';
 import Chartvalues from '../containers/Chartvalues';
 import TestValues from '../containers/TestValues';
+import ResponsePage from '../containers/ResponsePage';
+import NotFound from '../containers/NotFound';
 
 const App = () => (
     <BrowserRouter>
@@ -15,7 +17,9 @@ const App = () => (
                 <Route exact path="/about" component={About} />
                 <Route exact path="/tables" component={Tables}/>
                 <Route exact path="/test" component={TestValues} />
+                <Route exact path="/response" component={ResponsePage} />
                 <Route exact path="/charting" component={Chartvalues}></Route>
+                <Route component={NotFound}/>
             </Switch>
         </Layout>
     </BrowserRouter>

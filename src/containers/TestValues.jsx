@@ -1,39 +1,101 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {connect} from 'react-redux';
+// import { bacteriaRequest} from '../actions';
 
 
-const TestValues = () => {
+
+
+const TestValues = props => {
+
+
+    const [form, Setvalues] = useState({
+        //mimProteings: "",
+    });
+
+
+    const handleInput = event =>{
+        Setvalues({
+            ...form,
+            [event.target.name]:event.target.value 
+        })
+    }
+
+    const handleSubmit = event =>{
+        event.preventDefault();
+        // props.bacteriaRequest(form);
+        console.log(form);
+        props.history.push("/response")
+    }   
+
+
     return (
         <div className="container p-4">
-            <form action="/stck/add" method="POST" encType="multipart/form-data">
+            <h1 className="card-text"> Prediccion bacteriana.</h1>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <div className="row">
                     <div className="form-group col-md-6">
                         <div className="form-floating mb-3">
-                            <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                            <label for="floatingInput">Temperatura ideal</label>
+                            <input 
+                                name="idealTemperature"
+                                type="text" 
+                                className="form-control" 
+                                id="floatingInput" 
+                                placeholder="Temperatura ideal"
+                                onChange={handleInput}
+                            />
+                            <label htmlFor="floatingInput">Temperatura ideal</label>
                         </div>
                     </div>
                     <div className="form-group col-md-6">
                         <div className="form-floating mb-3">
-                            <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                            <label for="floatingInput">Proteínas mínimas</label>
+                            <input 
+                            name="minProteins"
+                            type="text" 
+                            className="form-control" 
+                            id="floatingInput" 
+                            placeholder="Proteínas mínimas"
+                            onChange={handleInput}
+                            />
+                            <label htmlFor="floatingInput">Proteínas mínimas</label>
                         </div>
                     </div>
                     <div className="form-group col-md-6">
                         <div className="form-floating mb-3">
-                            <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                            <label for="floatingInput">Ácido tritatable</label>
+                            <input
+                            name="tritatableAcid"
+                            type="text" 
+                            className="form-control" 
+                            id="floatingInput" 
+                            placeholder="Ácido tritatable"
+                            onChange={handleInput}
+                            />
+                            <label htmlFor="floatingInput">Ácido tritatable</label>
                         </div>
                     </div>
                     <div className="form-group col-md-6">
                         <div className="form-floating mb-3">
-                            <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                            <label for="floatingInput">pH suero de leche</label>
+                            <input
+                            name="phSour"
+                            type="text" 
+                            className="form-control" 
+                            id="floatingInput" 
+                            placeholder="pH suero de leche"
+                            onChange={handleInput}
+                            />
+                            <label htmlFor="floatingInput">pH suero de leche</label>
                         </div>
                     </div>
                     <div className="form-group col-md-6">
                         <div className="form-floating mb-3">
-                            <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                            <label for="floatingInput">Grasa de la leche sobre 100mg</label>
+                            <input
+                            name="fatMilk"
+                            type="text" 
+                            className="form-control" 
+                            id="floatingInput" 
+                            placeholder="Grasa de la leche sobre 100mg"
+                            onChange={handleInput}
+                            />
+                            <label htmlFor="floatingInput">Grasa de la leche sobre 100mg</label>
                         </div>
                     </div>
                 </div>
@@ -48,4 +110,8 @@ const TestValues = () => {
     );
 };
 
+// const mapDispatchToProps = {
+//     bacteriaRequest,
+// }
 export default TestValues;
+// export default connect(null, mapDispatchToProps)(TestValues);
