@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 const BacteriaStrain = () => {
 
     const handleInput = event => {
@@ -14,7 +14,7 @@ const BacteriaStrain = () => {
     const [resVals, Setresvals] = useState({});
 
 
-    
+
     // console.log("the content of resVals: ", resVals.value_predicted);
     const handleSubmit = event => {
         event.preventDefault();
@@ -31,8 +31,10 @@ const BacteriaStrain = () => {
 
         // console.log(form);
         // props.history.push("/response")
+
+
     }
-    console.log(resVals.value_predicted);
+    console.log(resVals);
     console.log(resVals.length);
     return (
         <div>
@@ -117,22 +119,28 @@ const BacteriaStrain = () => {
 
             </form>
 
-            { resVals.value_predicted === undefined
-                
-            }
-            <div className="card">
-                <div className="card-header">
-                    <h5>Predicción</h5>
-                </div>
-                <div className="card-body">
-                    <h5>Estado </h5>
-                    <h5>Precisión: {resVals}</h5>
-                    <h5>Valor predecido {resVals}</h5>
-                    <h5>Valor real: {resVals}</h5>
-                </div>
-            </div>
+            {resVals.length >= 0 &&
+                < div className="card">
+                    <div className="card-header">
+                        <h5>Predicción</h5>
+                    </div>
 
-        </div>
+                    {
+                        resVals.map(element =>
+                            <div key={element.index} className="card-body">
+                                <h5>Estado </h5>
+                                <h5>Precisión: {element.prediction_range}</h5>
+                                <h5>Valor predecido {element.value_predicted}</h5>
+                                <h5>Valor real: {element.value_predicted}</h5>
+                            </div>
+                        )
+                    }
+
+                </div>
+            }
+
+
+        </div >
     );
 };
 
