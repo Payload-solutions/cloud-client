@@ -26,6 +26,10 @@ const TestValues = () => {
     const [form, Setvalues] = useState({
     });
 
+    const [resVals, Setresvals] = useState({
+
+    });
+
 
     const handleInput = event => {
         Setvalues({
@@ -36,11 +40,18 @@ const TestValues = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        axios.post(APISingleStrep, form)
+        axios.post("http://127.0.0.1:5000/strep", {
+            "targetBacterian": 4.106, 
+            "minProteins": 2.591, 
+            "tritatableAcid": 0.992, 
+            "phSour": 4.415, 
+            "fatMilk": 3.1925
+        })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
             })
+            .then()
         // console.log(form);
         // props.history.push("/response")
     }
@@ -50,7 +61,7 @@ const TestValues = () => {
         <div className="container p-4">
             <h3 className="display-3">Simulación de predicción.</h3>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <div className="row">
+                {/* <div className="row">
                     <div className="form-group col-md-6">
                         <div className="form-floating mb-3">
                             <input
@@ -121,30 +132,13 @@ const TestValues = () => {
                             <label htmlFor="floatingInput">Grasa de la leche sobre 100mg</label>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="container p-4">
                     <button type="submit" className="btn btn-success">Enviar</button>
                 </div>
 
             </form>
 
-
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="card">
-                        <div className="card-header">
-                            <h5 className="card-title">
-                                Ask me something
-                            </h5>
-                        </div>
-                        <div className="card-body">
-                            <p className="card-text">
-                                Do something
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
 

@@ -32,3 +32,18 @@ export const APIMultipleLact = "http://172.17.0.2:5000/list_lact";
 
 
 // export default (APIFLASKM1)
+
+/***
+ * 
+ * const [resVals, Setresvals] = useState({
+
+    });
+
+    {
+    "targetBacterian": 4.106, 
+    "minProteins": 2.591, 
+    "tritatableAcid": 0.992, 
+    "phSour": 4.415, 
+    "fatMilk": 3.1925
+}
+ */
