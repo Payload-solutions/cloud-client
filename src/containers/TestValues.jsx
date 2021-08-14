@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 // import { bacteriaRequest} from '../actions';
 import axios from 'axios';
+import { APISingleStrep } from '../links/links';
 
 /**
  * 
@@ -21,11 +22,8 @@ import axios from 'axios';
 
 
 
-const TestValues = props => {
-
-
+const TestValues = () => {
     const [form, Setvalues] = useState({
-        //mimProteings: "",
     });
 
 
@@ -38,9 +36,7 @@ const TestValues = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        // props.bacteriaRequest(form);
-        console.log({form});
-        axios.post("http://127.0.0.1:5000/strep", form)
+        axios.post(APISingleStrep, form)
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -52,7 +48,7 @@ const TestValues = props => {
 
     return (
         <div className="container p-4">
-            <h1 className="card-text">Simulación de predicción.</h1>
+            <h3 className="display-3">Simulación de predicción.</h3>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <div className="row">
                     <div className="form-group col-md-6">
@@ -132,31 +128,21 @@ const TestValues = props => {
 
             </form>
 
-            {/* <div className="jumbotron">
-                <h1 className="display-4"></h1>
-                <p className="lead"></p>
-                <hr className="my-4" />
-                <p></p>
-                <a className="btn btn-primary btn-log" href=""></a>
-            </div> */}
-            <div className="card text-center">
-                <div className="card-header">
-                    <ul className="nav nav-tabs card-header-tabs">
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="true" href="#">Active</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Link</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
-                        </li>
-                    </ul>
-                </div>
-                <div className="card-body">
-                    <h5 className="card-title">Special title treatment</h5>
-                    <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
+
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="card">
+                        <div className="card-header">
+                            <h5 className="card-title">
+                                Ask me something
+                            </h5>
+                        </div>
+                        <div className="card-body">
+                            <p className="card-text">
+                                Do something
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
