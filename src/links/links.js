@@ -13,7 +13,7 @@ export const APIFlask = "http://192.168.100.8:4000/bacteria";
 /**
  * @description: Streptococcus prediction first microservice.
  */
-export const APISingleStrep = "http://172.17.0.2:5000/strep";
+export const APISingleStrep = "http://127.0.0.1:5000/strep";
 
 /**
  * @description: Streptococcus Multiple predictions first microservice.
