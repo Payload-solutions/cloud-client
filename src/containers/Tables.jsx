@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "../assets/styles/components/Tables.scss"
 import {APIFlask} from '../links/links'
 import { Line } from 'react-chartjs-2';
+import TableContent from '../components/TableContent';
 /**
  *@author Arturo Negreiros
  * this sections will contain the values extracted from the database, that is, cassandra sql
@@ -108,7 +109,7 @@ const Tables = () => {
                             />
                         </div>
                     </div>
-
+                    <TableContent/>
                 </div>
 
 

@@ -31,39 +31,39 @@ const TableContent = () => (
                 </tr>
                 <tr>
                     <td>Sepa Lactobacillus</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>4.001</td>
+                    <td>5.998</td>
+                    <td>UFC/ml</td>
                 </tr>
                 <tr>
                     <td>Temperatura ideal</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>40.001</td>
+                    <td>42.00</td>
+                    <td>C°</td>
                 </tr>
                 <tr>
                     <td>Ácido tritatable</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>0.95</td>
+                    <td>1.19</td>
+                    <td>pH</td>
                 </tr>
                 <tr>
                     <td>Grasa de la leche</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>1.003</td>
+                    <td>3.9993</td>
+                    <td>/100mg</td>
                 </tr>
                 <tr>
                     <td>Proteínas mínimas de leche</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>2.4</td>
+                    <td>2.7</td>
+                    <td>mg/100mg</td>
                 </tr>
                 <tr>
                     <td>pH suero de leche</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>4.4</td>
+                    <td>4.6</td>
+                    <td>pH</td>
                 </tr>
             </tbody>
         </table>

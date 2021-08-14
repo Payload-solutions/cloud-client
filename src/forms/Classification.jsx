@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 
 const Classification = () => {
@@ -23,8 +24,6 @@ const Classification = () => {
             "fatMilk": 3.1925
         })
             .then(res => {
-                console.log(res);
-                console.log(res.data);
                 Setresvals(res.data.data.prediction);
             })
 

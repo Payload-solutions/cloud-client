@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import {Button } from 'reactstrap';
 const BacteriaStrain = () => {
 
     const handleInput = event => {
@@ -11,9 +11,11 @@ const BacteriaStrain = () => {
     }
     const [form, Setvalues] = useState({
     });
-    const [resVals, Setresvals] = useState({
+    const [resVals, Setresvals] = useState({});
 
-    });
+
+    
+    // console.log("the content of resVals: ", resVals.value_predicted);
     const handleSubmit = event => {
         event.preventDefault();
         axios.post("http://127.0.0.1:5000/strep", {
@@ -24,15 +26,14 @@ const BacteriaStrain = () => {
             "fatMilk": 3.1925
         })
             .then(res => {
-                console.log(res);
-                console.log(res.data);
                 Setresvals(res.data.data.prediction);
             })
 
         // console.log(form);
         // props.history.push("/response")
     }
-    // console.log(resVals);
+    console.log(resVals.value_predicted);
+    console.log(resVals.length);
     return (
         <div>
             <h3 className="display-3">Simulación de predicción.</h3>
@@ -110,10 +111,27 @@ const BacteriaStrain = () => {
                     </div>
                 </div>
                 <div className="container p-4">
-                    <button type="submit" className="btn btn-success">Enviar</button>
+                    {/* <button type="submit" className="btn btn-success">Correr</button> */}
+                    <Button outline color="success" size="lg" block  >Correr</Button>
                 </div>
 
             </form>
+
+            { resVals.value_predicted === undefined
+                
+            }
+            <div className="card">
+                <div className="card-header">
+                    <h5>Predicción</h5>
+                </div>
+                <div className="card-body">
+                    <h5>Estado </h5>
+                    <h5>Precisión: {resVals}</h5>
+                    <h5>Valor predecido {resVals}</h5>
+                    <h5>Valor real: {resVals}</h5>
+                </div>
+            </div>
+
         </div>
     );
 };

@@ -16,17 +16,18 @@ const Header = () => (
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul className="navbar-nav ml-auto">
+
                     <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="/test">Pruebas</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/charting">Gráficas</a>
+                        <a className="nav-link active" href="/charting">Gráficas</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/tables">Tabla de contenido</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/about">Nosotros</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" aria-current="page" href="/test">Pruebas</a>
                     </li>
                 </ul>
             </div>

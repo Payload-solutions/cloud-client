@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
 import { APISingleStrep } from '../links/links';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import TableContent from '../components/TableContent';
+import Classification from '../forms/Classification';
 import BacteriaStrain from '../forms/BacteriaStrain';
 /**
  * 
@@ -69,21 +69,20 @@ const TestValues = () => {
     return (
         <div className="container p-4">
 
-            
+
             <div className="row">
+
+                <BacteriaStrain />
+                {/* <TableContent />
                 <Button outline color="secondary" onClick={togleForm} style={{ marginBottom: '1rem' }} block>Prediccion bacteriana</Button>
                 <Collapse isOpen={formOpen}>
-                    <BacteriaStrain />
-                </Collapse>
+                    
+                </Collapse> */}
                 <Button outline color="success" onClick={togleClass} style={{ marginBottom: '1rem' }}>Red de clasificación</Button>
                 <Collapse isOpen={classOpen}>
-                    <TableContent />
+                    <Classification />
                 </Collapse>
-                <Button outline color="success" onClick={tableToggle} style={{ marginBottom: '1rem' }}>Tabla de valores</Button>
-                <Collapse isOpen={isOpen}>
-                    <TableContent />
-                </Collapse>
-                
+
 
             </div>
 
