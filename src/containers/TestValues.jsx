@@ -78,10 +78,11 @@ const TestValues = () => {
                 <Collapse isOpen={formOpen}>
                     
                 </Collapse> */}
-                <Button outline color="success" onClick={togleClass} style={{ marginBottom: '1rem' }}>Red de clasificación</Button>
+                {/* <Button outline color="success" onClick={togleClass} style={{ marginBottom: '1rem' }}>Red de clasificación</Button>
                 <Collapse isOpen={classOpen}>
                     <Classification />
-                </Collapse>
+                </Collapse> */}
+                <Classification />
 
 
             </div>

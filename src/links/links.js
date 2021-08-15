@@ -31,19 +31,16 @@ export const APISinlgeLact = "http://127.0.0.1:5000/lact";
 export const APIMultipleLact = "http://172.17.0.2:5000/list_lact";
 
 
-// export default (APIFLASKM1)
 
-/***
- * 
- * const [resVals, Setresvals] = useState({
-
-    });
-
-    {
-    "targetBacterian": 4.106, 
-    "minProteins": 2.591, 
-    "tritatableAcid": 0.992, 
-    "phSour": 4.415, 
-    "fatMilk": 3.1925
-}
+/**
+ * @description: Classification model endpoint
  */
+export const APISingleClass = "http://127.0.0.1:5000/classification_single";
+
+
+/**
+ * @description: Classification model endpoint
+ */
+ export const APIMultipleClass = "http://127.0.0.1:5000/classification_multiple";
+
+ 

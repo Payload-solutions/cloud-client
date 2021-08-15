@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "../assets/styles/components/Tables.scss"
-import {APIFlask} from '../links/links'
+import { APIFlask } from '../links/links'
 import { Line } from 'react-chartjs-2';
 import TableContent from '../components/TableContent';
 /**
@@ -47,6 +47,30 @@ const Tables = () => {
 
         ]
     }
+
+    const config = {
+        type: 'line',
+        growthBacteria,
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        color: 'red',
+                        display: true,
+                        text: 'Crecimiento bacteriano'
+                    }
+                },
+                y: {
+                    title: {
+                        color: 'red',
+                        display: true,
+                        text: 'Tiempo'
+                    }
+                }
+            }
+        }
+    };
+
     return (
         <div>
             <div className="table_content">
@@ -99,17 +123,39 @@ const Tables = () => {
                                     title: {
                                         display: true,
                                         text: 'Average Rainfall per month',
-                                        fontSize: 20
+                                        fontSize: 30
                                     },
                                     legend: {
                                         display: true,
                                         position: 'right'
+                                    },
+                                    scales: {
+                                        x: {
+                                            title: {
+                                                color: 'black',
+                                                font: {
+                                                    size: 16
+                                                },
+                                                display: true,
+                                                text: 'Tiempo'
+                                            }
+                                        },
+                                        y: {
+                                            title: {
+                                                color: 'black',
+                                                font: {
+                                                    size: 16
+                                                },
+                                                display: true,
+                                                text: 'Crecimiento bacteriano'
+                                            }
+                                        }
                                     }
                                 }}
                             />
                         </div>
                     </div>
-                    <TableContent/>
+                    <TableContent />
                 </div>
 
 

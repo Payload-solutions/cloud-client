@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Collapse, Button } from 'reactstrap';
 import {APISingleStrep, APISinlgeLact} from '../links/links';
+
+
+
 const BacteriaStrain = () => {
 
     const handleInput = event => {
@@ -19,20 +22,10 @@ const BacteriaStrain = () => {
     const togglePrecision = () => setSinglePrecision(!singlePrecision);
     const toggleInformation = () => setInformation(!information);
 
-    /**
-     * 
-     * {
-            "targetBacterian": 4.106,
-            "minProteins": 2.591,
-            "tritatableAcid": 0.992,
-            "phSour": 4.415,
-            "fatMilk": 3.1925
-        }
-     */
     let apiPost = null
     const handleSubmit = event => {
         event.preventDefault();
-        
+        console.log(form);
         if (form.chooseStrain === "lact"){
             apiPost = APISinlgeLact;
         }else{
@@ -47,6 +40,7 @@ const BacteriaStrain = () => {
         
         
     }
+
     return (
         <div>
             <h3 className="display-3">Simulación de predicción.</h3>
