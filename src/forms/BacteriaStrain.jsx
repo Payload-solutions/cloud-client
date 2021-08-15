@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import { Collapse, Button } from 'reactstrap';
+import {APISingleStrep, APISinlgeLact} from '../links/links';
 const BacteriaStrain = () => {
 
     const handleInput = event => {
@@ -18,19 +19,33 @@ const BacteriaStrain = () => {
     const togglePrecision = () => setSinglePrecision(!singlePrecision);
     const toggleInformation = () => setInformation(!information);
 
-
-    const handleSubmit = event => {
-        event.preventDefault();
-        axios.post("http://127.0.0.1:5000/strep", {
+    /**
+     * 
+     * {
             "targetBacterian": 4.106,
             "minProteins": 2.591,
             "tritatableAcid": 0.992,
             "phSour": 4.415,
             "fatMilk": 3.1925
-        })
+        }
+     */
+    let apiPost = null
+    const handleSubmit = event => {
+        event.preventDefault();
+        
+        if (form.chooseStrain === "lact"){
+            apiPost = APISinlgeLact;
+        }else{
+            apiPost = APISingleStrep;
+        }
+
+        console.log(apiPost);
+        axios.post(apiPost, form)
             .then(res => {
                 Setresvals(res.data.data.prediction);
-            })
+            });
+        
+        
     }
     return (
         <div>
@@ -107,6 +122,22 @@ const BacteriaStrain = () => {
                             <label htmlFor="floatingInput">Grasa de la leche sobre 100mg</label>
                         </div>
                     </div>
+                    <div className="form-group col-md-6">
+                        <div className="form-floating mb-3">
+                            <select name="chooseStrain" 
+                                    className="form-select" 
+                                    id="floatingSelect" 
+                                    aria-label="Floating label select example"
+                                    onChange={handleInput}
+                                    >
+                                <option defaultValue>Sepa de bacteria a predecir</option>
+                                <option value="strep">Streptococcus</option>
+                                <option value="lact">Lactobacillus</option>
+                            </select>
+                            <label htmlFor="floatingInput">Sepa de bacteria a predecir</label>
+                        </div>
+
+                    </div>
                 </div>
                 <div className="container p-4">
                     {/* <button type="submit" className="btn btn-success">Correr</button> */}
@@ -165,10 +196,7 @@ const BacteriaStrain = () => {
                     </div>
 
                 </div>
-
             }
-
-
         </div >
     );
 };

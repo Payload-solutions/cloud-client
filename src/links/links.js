@@ -23,7 +23,7 @@ export const APIMultipleStrep = "http://172.17.0.2:5000/list_strep";
 /**
  * @description: Lactobacillus prediction first microservice.
  */
-export const APISinlgeLact = "http://172.17.0.2:5000/lact";
+export const APISinlgeLact = "http://127.0.0.1:5000/lact";
 
 /**
  * @description: Lactobacillus Multiple predictions first microservice.
