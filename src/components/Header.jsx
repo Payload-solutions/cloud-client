@@ -15,7 +15,7 @@ const Header = () => (
                 <img src={menu} alt="" />
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul className="navbar-nav ml-auto">
+                <ul className="navbar-nav">
 
                     <li className="nav-item">
                         <a className="nav-link active" href="/charting">Gráficas</a>
