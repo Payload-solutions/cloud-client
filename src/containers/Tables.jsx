@@ -48,29 +48,6 @@ const Tables = () => {
         ]
     }
 
-    const config = {
-        type: 'line',
-        growthBacteria,
-        options: {
-            scales: {
-                x: {
-                    title: {
-                        color: 'red',
-                        display: true,
-                        text: 'Crecimiento bacteriano'
-                    }
-                },
-                y: {
-                    title: {
-                        color: 'red',
-                        display: true,
-                        text: 'Tiempo'
-                    }
-                }
-            }
-        }
-    };
-
     return (
         <div>
             <div className="table_content">

@@ -106,6 +106,27 @@ const Chartvalues = () => {
                     legend: {
                         display: true,
                         position: 'right'
+                    },scales: {
+                        x: {
+                            title: {
+                                color: 'black',
+                                font: {
+                                    size: 16
+                                },
+                                display: true,
+                                text: 'Validez del entrenamiento'
+                            }
+                        },
+                        y: {
+                            title: {
+                                color: 'black',
+                                font: {
+                                    size: 16
+                                },
+                                display: true,
+                                text: 'Entrenamiento realizado'
+                            }
+                        }
                     }
                 }}
             />
@@ -139,6 +160,27 @@ const Chartvalues = () => {
                     legend: {
                         display: true,
                         position: 'right'
+                    },scales: {
+                        x: {
+                            title: {
+                                color: 'black',
+                                font: {
+                                    size: 16
+                                },
+                                display: true,
+                                text: 'Validez de la precisión'
+                            }
+                        },
+                        y: {
+                            title: {
+                                color: 'black',
+                                font: {
+                                    size: 16
+                                },
+                                display: true,
+                                text: 'Precisión'
+                            }
+                        }
                     }
                 }}
             />
