@@ -11,7 +11,7 @@ const Classification = () => {
     }
     const [form, Setvalues] = useState({
     });
-    const [resVals, Setresvals] = useState({
+    const [classVals, Setclassvals] = useState({
 
     });
     const handleSubmit = event => {
@@ -24,30 +24,73 @@ const Classification = () => {
             "fatMilk": 3.1925
         })
             .then(res => {
-                Setresvals(res.data.data.prediction);
+                Setclassvals(res.data.data.prediction);
             })
 
-        // console.log(form);
-        // props.history.push("/response")
     }
-    // console.log(resVals);
+
+
+    /**
+     * 
+     * 
+     * streptococcus_initial_strain_cfu_ml
+        lactobacillus_initial_strain_cfu_ml
+        ideal_temperature_c
+        minimum_milk_proteins
+        titratable_acidity
+        pH_milk_sour_
+        fat_milk_over_100mg_
+        lactobacillus_final_cfu_ml
+        streptococcus_final_cfu_ml
+     */
+
+
+
     return (
         <div>
-            <h3 className="display-3">Simulación de predicción.</h3>
+            <h3 className="display-3">Red de clasificación.</h3>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <div className="row">
                     <div className="form-group col-md-6">
                         <div className="form-floating mb-3">
                             <input
-                                name="targetBacterian"
+                                name="streptococcusStrainInicial"
                                 type="number"
                                 step="any"
                                 className="form-control"
                                 id="floatingInput"
-                                placeholder="Predicción bacteriana"
+                                placeholder="Sepa inicial del estreptococo"
                                 onChange={handleInput}
                             />
-                            <label htmlFor="floatingInput">Predicción bacteriana.</label>
+                            <label htmlFor="floatingInput">Sepa inicial del estreptococo.</label>
+                        </div>
+                    </div>
+                    <div className="form-group col-md-6">
+                        <div className="form-floating mb-3">
+                            <input
+                                name="lactobacillusStrainInicial"
+                                type="number"
+                                step="any"
+                                className="form-control"
+                                id="floatingInput"
+                                placeholder="Sepa inicial de lactobacillus"
+                                onChange={handleInput}
+                            />
+                            <label htmlFor="floatingInput">Sepa inicial del lactobacillus.</label>
+                        </div>
+                    </div>
+                    <div className="form-group col-md-6">
+                        <div className="form-floating mb-3">
+                            <input
+                                name="idealTemperature"
+                                type="number"
+                                step="any"
+                                className="form-control"
+                                id="floatingInput"
+                                placeholder="Temperatura ideal"
+                                onChange={handleInput}
+                            />
+                            <label htmlFor="floatingInput">Temperatura ideal</label>
                         </div>
                     </div>
                     <div className="form-group col-md-6">
@@ -104,6 +147,34 @@ const Classification = () => {
                                 onChange={handleInput}
                             />
                             <label htmlFor="floatingInput">Grasa de la leche sobre 100mg</label>
+                        </div>
+                    </div>
+                    <div className="form-group col-md-6">
+                        <div className="form-floating mb-3">
+                            <input
+                                name="streptococcusStrainFinal"
+                                type="number"
+                                step="any"
+                                className="form-control"
+                                id="floatingInput"
+                                placeholder="Sepa final del estreptococo"
+                                onChange={handleInput}
+                            />
+                            <label htmlFor="floatingInput">Sepa final del estreptococo.</label>
+                        </div>
+                    </div>
+                    <div className="form-group col-md-6">
+                        <div className="form-floating mb-3">
+                            <input
+                                name="lactobacillusStrainFinal"
+                                type="number"
+                                step="any"
+                                className="form-control"
+                                id="floatingInput"
+                                placeholder="Sepa final del lactobacillus"
+                                onChange={handleInput}
+                            />
+                            <label htmlFor="floatingInput">Sepa final del lactobacillus.</label>
                         </div>
                     </div>
                 </div>

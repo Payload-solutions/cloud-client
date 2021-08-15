@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button } from 'reactstrap';
+import { Collapse, Button, CardBody, Card } from 'reactstrap';
 const BacteriaStrain = () => {
 
     const handleInput = event => {
@@ -13,9 +13,12 @@ const BacteriaStrain = () => {
     });
     const [resVals, Setresvals] = useState({});
 
+    const [information, setInformation] = useState(false);
+    const [singlePrecision, setSinglePrecision] = useState(false);
+    const togglePrecision = () => setSinglePrecision(!singlePrecision);
+    const toggleInformation = () => setInformation(!information);
 
 
-    // console.log("the content of resVals: ", resVals.value_predicted);
     const handleSubmit = event => {
         event.preventDefault();
         axios.post("http://127.0.0.1:5000/strep", {
@@ -28,14 +31,7 @@ const BacteriaStrain = () => {
             .then(res => {
                 Setresvals(res.data.data.prediction);
             })
-
-        // console.log(form);
-        // props.history.push("/response")
-
-
     }
-    console.log(resVals);
-    console.log(resVals.length);
     return (
         <div>
             <h3 className="display-3">Simulación de predicción.</h3>
@@ -120,23 +116,56 @@ const BacteriaStrain = () => {
             </form>
 
             {resVals.length >= 0 &&
-                < div className="card">
-                    <div className="card-header">
-                        <h5>Predicción</h5>
+
+                <div className="container p-4">
+                    <div className="row">
+
+                        <div className="container p-2">
+                            <Button color="secondary" onClick={togglePrecision} style={{ marginBottom: '1rem' }}>Predicciones</Button>
+                        </div>
+                        <Collapse isOpen={singlePrecision}>
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th>Precisión</th>
+                                        <th>Valor predecido</th>
+                                        <th>Valor real</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        resVals.map(element =>
+                                            <tr key={element.index} className="card-body">
+                                                <td>{element.prediction_range}</td>
+                                                <td>{element.value_predicted}</td>
+                                                <td>{element.target_data}</td>
+                                            </tr>
+                                        )
+                                    }
+                                </tbody>
+                            </table>
+                        </Collapse>
+                        <div className="container p-2">
+                            <Button color="warning" onClick={toggleInformation} style={{ marginBottom: '1rem' }}>Información</Button>
+                        </div>
+                        <Collapse isOpen={information}>
+                            <div className="card">
+                                <div className="card-header">
+                                    <h2 className="card-title">Información general</h2>
+                                </div>
+                                <div className="card-body">
+                                    <p className="card-text">
+                                        Acabamos de verificar una predicción de la red neuronal de regresión lineal.
+                                        La precisión es alta, debido a los múltiples entrenamientos y validaciones para
+                                        evitar el overfitting y el underfitting.
+                                    </p>
+                                </div>
+                            </div>
+                        </Collapse>
                     </div>
 
-                    {
-                        resVals.map(element =>
-                            <div key={element.index} className="card-body">
-                                <h5>Estado </h5>
-                                <h5>Precisión: {element.prediction_range}</h5>
-                                <h5>Valor predecido {element.value_predicted}</h5>
-                                <h5>Valor real: {element.value_predicted}</h5>
-                            </div>
-                        )
-                    }
-
                 </div>
+
             }
 
 
