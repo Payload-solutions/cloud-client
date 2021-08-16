@@ -7,7 +7,7 @@ const Header = () => (
 
     <nav className="navbar navbar-expand-lg navbar bg">
         <div className="container-fluid">
-            <img className="header__img" src={logo} alt="neuron network icon" />
+            <a href="/"><img className="header__img" src={logo} alt="neuron network icon" /></a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 <img src={menu} alt="" />
