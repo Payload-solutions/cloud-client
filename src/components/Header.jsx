@@ -2,8 +2,6 @@ import React from 'react';
 import '../assets/styles/components/Header.scss'
 import logo from '../assets/static/otherlogo.png'
 import menu from '../assets/static/menu.png'
-// Presentational components, not logic
-// only presentation in html
 
 const Header = () => (
 

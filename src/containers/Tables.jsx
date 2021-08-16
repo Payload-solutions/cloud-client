@@ -3,6 +3,8 @@ import "../assets/styles/components/Tables.scss"
 import { APIFlask } from '../links/links'
 import { Line } from 'react-chartjs-2';
 import TableContent from '../components/TableContent';
+import { Collapse, Button, CardBody, Card } from 'reactstrap';
+// import { Collapse, Button, CardBody, Card } from 'reactstrap';
 /**
  *@author Arturo Negreiros
  * this sections will contain the values extracted from the database, that is, cassandra sql
@@ -14,6 +16,9 @@ const Tables = () => {
     const [bacterias, Setbacterias] = useState([]);
     const [times, Settime] = useState([]);
 
+    const [tableInfo, setTableInfo] = useState(false);
+    const toggleTableinfo = () => setTableInfo(!tableInfo);
+
     //const APIFlask = "http://192.168.100.8:4000/bacteria";
     useEffect(() => {
         fetch(APIFlask)
@@ -21,20 +26,11 @@ const Tables = () => {
             .then(data => Settime(data.time) || Setbacterias(data.bacteria) || Setnumbers(data.datas))
     }, []);
 
-    console.log(bacterias);
+
 
     const growthBacteria = {
         labels: times,
         datasets: [
-            /*{
-                label: "Tiempo de crecimiento",
-                fill: false,
-                lineTension: 0.1,
-                backgroundColor: 'rgba(247, 100, 128, 0.4)',
-                borderColor: 'rgb(75, 192, 192)',
-                borderWidth: 2,
-                data: times
-            },*/
             {
                 label: "Crecimiento logarítmico",
                 fill: false,
@@ -52,30 +48,34 @@ const Tables = () => {
         <div>
             <div className="table_content">
                 <div className="row">
-                    <div className="col-md-6">
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Indice</th>
-                                    <th scope="col">Tiempo</th>
-                                    <th scope="col">Crecimiento logarítimico</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    numbers.map(element =>
-                                        <tr key={element.id}>
-                                            <td>{element.id}</td>
-                                            <td> {element.time}</td>
-                                            <td> {element.bacteria}</td>
+                    <div className="col-md-3">
+                        <div className="container p-4">
+                            <div >
+                                <table className="table table-bordered table-striped table-condensed table-fixed">
+                                    <thead>
+                                        <tr>
+                                            <th className="col">#</th>
+                                            <th className="col">Tiempo</th>
+                                            <th className="col">Crecimiento logarítimico</th>
                                         </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            numbers.map(element =>
+                                                <tr key={element.id}>
+                                                    <td className="col">{element.id}</td>
+                                                    <td className="col"> {element.time}</td>
+                                                    <td className="col"> {element.bacteria}</td>
+                                                </tr>
 
-                                    )
-                                }
-                            </tbody>
-                        </table>
+                                            )
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-9">
                         <div className="containter p-2">
                             <div className="row">
                                 <div className="col-md-12" id="card__content_table">
@@ -132,7 +132,17 @@ const Tables = () => {
                             />
                         </div>
                     </div>
-                    <TableContent />
+                    <div className="col-md-12">
+                        <Button color="success" onClick={toggleTableinfo} style={{ marginBottom: '1rem' }}>Parámetros de evaluación</Button>
+                        <Collapse isOpen={tableInfo}>
+                            <div className="table__strain">
+
+                                <TableContent />
+                            </div>
+                        </Collapse>
+
+                    </div>
+
                 </div>
 
 

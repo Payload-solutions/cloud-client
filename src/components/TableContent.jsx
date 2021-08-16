@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 
-const TableContent = () => (
-    <div>
+
+const TableContent = () => {
+
+    // const [tableInfo, setTableInfo] = useState(false);
+    // const toggleTableinfo = () => setTableInfo(!tableInfo);
+    return (
+        <div>
         <div className="card">
             <div className="card-header">
                 <h5 className="card-title">¿Qué vamos a predecir?</h5>
@@ -68,6 +73,9 @@ const TableContent = () => (
             </tbody>
         </table>
     </div>
-);
+    );
+};
 
 export default TableContent;
+
+
