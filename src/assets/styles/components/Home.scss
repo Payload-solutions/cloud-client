@@ -1,14 +1,16 @@
 .index {
     width: 99, 5vw;
     height: 100vh;
+    
 }
-.masthead {
-    color: black;
+.img-head {
+    // color: black;
     min-height: 30rem;
     width: 100%;
     height: 100%;
     padding-top: 8rem;
-    //background: url('../../static/home_img.jpg');
+    // background: url('../../static/home_img.jpg');
+    background-image: url("../../static/yo.png");
     background-position: center, center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -18,3 +20,4 @@
     margin: 50px;
     align-items: center;
 }
+
