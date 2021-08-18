@@ -18,14 +18,16 @@ const About = () => (
                     <div className="card">
                         <div className="card-header">
                             <h5 className="cart-title">
-                                ¿Quienes somos nosotros?
+                                ¿Qué aprendimos?
                             </h5>
                         </div>
                         <div className="card-body">
                             <p className="card-text">
-                                Utilizamos redes neuronales, capaces de predecir el crecimiento
-                                bacteriano y capaces de clasificar los diferentes tipos de productos
-                                de yogur en vase a sus variables principales.
+                                Si bien este fue un semestre lleno de retos, y trabajo duro como los demás, esto nos sirvió para
+                                optimizar y mejorar nuestros conocimientos en un tema que ya no es parte del futuro, sino es el presente
+                                como lo es la Inteligencia Artificial, pudimos ampliar nuestro horizonte de conocimientos. Es un tema que 
+                                aún nos falta por conocer más, pero con estas bases sabemos que se nos hará más divertido el camino hacia la
+                                sabiduría.
                             </p>
                         </div>
                     </div>
@@ -34,20 +36,7 @@ const About = () => (
             </div>
             <div className="card mb-3">
                 <img src={guys} className="card-img-top" alt="..." />
-                <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                </div>
             </div>
-            {/* <div className="card">
-                <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-                <img src="..." className="card-img-bottom" alt="..." />
-            </div> */}
         </div>
     </div>
 
