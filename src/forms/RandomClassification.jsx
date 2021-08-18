@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import axios from 'axios';
-import { APISingleClass } from '../links/links';
+import { APIMultipleClass } from '../links/links';
 
 
 const RandomClassification = () => {
@@ -11,8 +11,9 @@ const RandomClassification = () => {
     const [classVals, SetClassVals] = useState({});
 
 
-    const classSubmit = () => {
-        axios.post(APISingleClass, {
+    const classSubmit = event => {
+        event.preventDefault();
+        axios.post(APIMultipleClass, {
             "predictions": ["Low fat yogurt",
                 "Low fat yogurt",
                 "Regular yogurt",
@@ -49,7 +50,8 @@ const RandomClassification = () => {
             [4.562, 4.833, 41.358999999999995, 2.654, 1.015, 4.488, 1.0795, 8.11, 7.65]]
         })
             .then(res => {
-                SetClassVals(res.response);
+                console.log(res.data);
+                SetClassVals(res.data.response);
             });
     }
 
@@ -70,7 +72,7 @@ const RandomClassification = () => {
                     </form>
                 </div>
 
-                {classVals.length > 0 &&
+                {/* {classVals.length > 0 &&
                     <div className="container p-4">
                         <div className="row">
                             <div className="container p-2">
@@ -96,7 +98,7 @@ const RandomClassification = () => {
                             </Collapse>
                         </div>
                     </div>
-                }
+                } */}
             </div>
         </div>
     );

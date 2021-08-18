@@ -6,7 +6,6 @@ import TableContent from '../components/TableContent';
 import Classification from '../forms/Classification';
 import BacteriaStrain from '../forms/BacteriaStrain';
 import RandomClassification from '../forms/RandomClassification';
-import RandomRegression from '../forms/RandomRegression';
 
 /**
  * 
