@@ -3,7 +3,6 @@ import axios from 'axios';
 import { APISingleClass } from '../links/links';
 import { Collapse, Button } from 'reactstrap';
 
-
 const Classification = () => {
     const handleClassInput = event => {
         SetClassValues({
@@ -197,42 +196,37 @@ const Classification = () => {
                 <div className="container p-4">
                     <div className="row">
 
-                        <div className="col-md-12">
-                            <div className="container p-2">
-                                <Button color="secondary" onClick={toggleClassButton} style={{ marginBottom: '1rem' }}>Predicciones</Button>
-                            </div>
-                            <Collapse isOpen={classButton}>
-                                <table className="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Mensaje del entrenamiento</th>
-                                            <th>Valor predecido</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {
-                                            classVals.map(element =>
-                                                <tr key={element.index} className="card-body">
-                                                    <td>{element.message}</td>
-                                                    <td>{element.predictions.accuracy_metrics}</td>
-                                                </tr>
-                                            )
-                                        }
-                                    </tbody>
-                                </table>
-                            </Collapse>
+                        <div className="container p-2">
+                            <Button color="secondary" onClick={toggleClassButton} style={{ marginBottom: '1rem' }}>Predicciones</Button>
                         </div>
+                        <Collapse isOpen={classButton}>
+                                <div className="col-md-12">
+                                <div className="card text-white bg-success">
+                                    <div className="card-body">
+                                        <h5 className="card-title">Estado de la predección</h5>
+                                    </div>
+                                    {
+                                        classVals.map(element =>
+                                            <ul key={element.index} className="list-group list-group-flush">
+                                                <li className="list-group-item">Mensaje: <strong>{element.message}</strong></li>
+                                                <li className="list-group-item">Valor predecido: <strong>{element.predictions.accuracy_metrics}</strong></li>
+                                            </ul>
+                                        )
+                                    }
+                                </div>
+                            </div>
+                        </Collapse>
                         <div className="container p-2">
                             <Button color="warning" onClick={toggleClassInfo} style={{ marginBottom: '1rem' }}>Información</Button>
                         </div>
                         <Collapse isOpen={classInfo}>
-                            <div className="card">
+                            <div className="card text-white bg-success">
                                 <div className="card-header">
                                     <h2 className="card-title">Información general</h2>
                                 </div>
                                 <div className="card-body">
                                     <p className="card-text">
-                                        Acabamos de verificar una predicción de la red neuronal de regresión lineal.
+                                        Acabamos de verificar una predicción de la red neuronal de clasificación múltiple.
                                         La precisión es alta, debido a los múltiples entrenamientos y validaciones para
                                         evitar el overfitting y el underfitting.
                                     </p>

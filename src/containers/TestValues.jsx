@@ -5,6 +5,9 @@ import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import TableContent from '../components/TableContent';
 import Classification from '../forms/Classification';
 import BacteriaStrain from '../forms/BacteriaStrain';
+import RandomClassification from '../forms/RandomClassification';
+import RandomRegression from '../forms/RandomRegression';
+
 /**
  * 
  * [minimum_milk_proteins, titratable_acidity, pH_milk_sour_, fat_milk_over_100mg_
@@ -30,10 +33,10 @@ const TestValues = () => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [formOpen, setFormOpen] = useState(false);
-    const [classOpen, setClassification] = useState(false);
+    const [simulation, setSimulation] = useState(false);
 
 
-    const tableToggle = () => setIsOpen(!isOpen);
+    const toggleSimulation = () => setSimulation(!simulation);
     const togleForm = () => setFormOpen(!formOpen);
     const togleClass = () => setClassification(!classOpen)
 
@@ -73,16 +76,12 @@ const TestValues = () => {
             <div className="row">
 
                 <BacteriaStrain />
-                {/* <TableContent />
-                <Button outline color="secondary" onClick={togleForm} style={{ marginBottom: '1rem' }} block>Prediccion bacteriana</Button>
-                <Collapse isOpen={formOpen}>
-                    
-                </Collapse> */}
-                {/* <Button outline color="success" onClick={togleClass} style={{ marginBottom: '1rem' }}>Red de clasificación</Button>
-                <Collapse isOpen={classOpen}>
-                    <Classification />
-                </Collapse> */}
                 <Classification />
+
+                <Button outline color="secondary" onClick={toggleSimulation} style={{ marginBottom: '1rem' }}>Simulaciones múltiples</Button>
+                <Collapse isOpen={simulation}>
+                    <RandomClassification />
+                </Collapse>
 
 
             </div>
