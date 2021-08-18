@@ -56,6 +56,7 @@ const Classification = () => {
                                 name="streptococcusStrainInicial"
                                 type="number"
                                 step="any"
+                                required
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="Sepa inicial del estreptococo"
@@ -70,6 +71,7 @@ const Classification = () => {
                                 name="lactobacillusStrainInicial"
                                 type="number"
                                 step="any"
+                                required
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="Sepa inicial de lactobacillus"
@@ -84,6 +86,7 @@ const Classification = () => {
                                 name="idealTemperature"
                                 type="number"
                                 step="any"
+                                required
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="Temperatura ideal"
@@ -98,6 +101,7 @@ const Classification = () => {
                                 name="minProteins"
                                 type="number"
                                 step="any"
+                                required
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="Proteínas mínimas"
@@ -112,6 +116,7 @@ const Classification = () => {
                                 name="tritatableAcid"
                                 type="number"
                                 step="any"
+                                required
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="Ácido tritatable"
@@ -126,6 +131,7 @@ const Classification = () => {
                                 name="phSour"
                                 type="number"
                                 step="any"
+                                required
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="pH suero de leche"
@@ -140,6 +146,7 @@ const Classification = () => {
                                 name="fatMilk"
                                 type="number"
                                 step="any"
+                                required
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="Grasa de la leche sobre 100mg"
@@ -154,6 +161,7 @@ const Classification = () => {
                                 name="streptococcusStrainFinal"
                                 type="number"
                                 step="any"
+                                required
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="Sepa final del estreptococo"
@@ -168,6 +176,7 @@ const Classification = () => {
                                 name="lactobacillusStrainFinal"
                                 type="number"
                                 step="any"
+                                required
                                 className="form-control"
                                 id="floatingInput"
                                 placeholder="Sepa final del lactobacillus"
@@ -188,29 +197,31 @@ const Classification = () => {
                 <div className="container p-4">
                     <div className="row">
 
-                        <div className="container p-2">
-                            <Button color="secondary" onClick={toggleClassButton} style={{ marginBottom: '1rem' }}>Predicciones</Button>
+                        <div className="col-md-12">
+                            <div className="container p-2">
+                                <Button color="secondary" onClick={toggleClassButton} style={{ marginBottom: '1rem' }}>Predicciones</Button>
+                            </div>
+                            <Collapse isOpen={classButton}>
+                                <table className="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Mensaje del entrenamiento</th>
+                                            <th>Valor predecido</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            classVals.map(element =>
+                                                <tr key={element.index} className="card-body">
+                                                    <td>{element.message}</td>
+                                                    <td>{element.predictions.accuracy_metrics}</td>
+                                                </tr>
+                                            )
+                                        }
+                                    </tbody>
+                                </table>
+                            </Collapse>
                         </div>
-                        <Collapse isOpen={classButton}>
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th>Mensaje del entrenamiento</th>
-                                        <th>Valor predecido</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        classVals.map(element =>
-                                            <tr key={element.index} className="card-body">
-                                                <td>{element.message}</td>
-                                                <td>{element.predictions.accuracy_metrics}</td>
-                                            </tr>
-                                        )
-                                    }
-                                </tbody>
-                            </table>
-                        </Collapse>
                         <div className="container p-2">
                             <Button color="warning" onClick={toggleClassInfo} style={{ marginBottom: '1rem' }}>Información</Button>
                         </div>
